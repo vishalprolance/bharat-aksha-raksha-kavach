@@ -6,9 +6,10 @@ import { Badge } from "@/components/ui/badge";
 
 interface DashboardHeaderProps {
   securityLevel: string;
+  onLogout: () => void;
 }
 
-const DashboardHeader = ({ securityLevel }: DashboardHeaderProps) => {
+const DashboardHeader = ({ securityLevel, onLogout }: DashboardHeaderProps) => {
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
@@ -57,7 +58,12 @@ const DashboardHeader = ({ securityLevel }: DashboardHeaderProps) => {
                 <User className="h-4 w-4" />
                 <span className="ml-2">ADM.KUMAR</span>
               </Button>
-              <Button variant="ghost" size="sm" className="text-white hover:bg-white/10">
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                className="text-white hover:bg-red-500/20"
+                onClick={onLogout}
+              >
                 <LogOut className="h-4 w-4" />
               </Button>
             </div>

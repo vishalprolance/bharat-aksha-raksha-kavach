@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Shield, Radar, Globe, Satellite, Users, AlertTriangle } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -12,7 +11,11 @@ import OperationsCenter from "@/components/OperationsCenter";
 import IntelligenceMap from "@/components/IntelligenceMap";
 import SecureMetrics from "@/components/SecureMetrics";
 
-const Index = () => {
+interface IndexProps {
+  onLogout: () => void;
+}
+
+const Index = ({ onLogout }: IndexProps) => {
   const [activeAlert, setActiveAlert] = useState(false);
   const [securityLevel, setSecurityLevel] = useState("DEFCON 2");
 
@@ -26,7 +29,7 @@ const Index = () => {
         </div>
       </div>
 
-      <DashboardHeader securityLevel={securityLevel} />
+      <DashboardHeader securityLevel={securityLevel} onLogout={onLogout} />
 
       <div className="container mx-auto px-4 py-6 space-y-6">
         {/* Quick Stats */}
